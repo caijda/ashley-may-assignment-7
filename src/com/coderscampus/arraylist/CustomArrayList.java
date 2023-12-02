@@ -32,9 +32,10 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T get(int index) {
+	public T get(int index) throws IndexOutOfBoundsException{
 		return (T)items[index];
 	}
+	/////////////////////////////////////////////////////////////
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
