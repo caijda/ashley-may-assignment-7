@@ -39,8 +39,26 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'add'");
+		Object[] temp = new Object[items.length];
+		int i;
+		
+		temp[index] = item;
+		for (i = 0; i < index; i++){
+			if(items[i] != null){
+				temp[i] = items[i];
+			}
+		}
+		for (i = index; i < items.length; i++){
+			// if (i == items.length && items[i] != null){
+			// 	temp = Arrays.copyOf(temp, i*2);
+			// }
+			if (items[i] != null){
+				temp[i+1] = items[i];
+			}
+		}
+		items = temp;
+
+		return true;
 	}
 
 	@Override

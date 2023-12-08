@@ -18,7 +18,7 @@ public class CustomArrayListTest {
     }
 
     @Test
-    public void should_add_40_items_to_list (){
+    public void should_add_40_items_to_list(){
         CustomList<Integer> sut = new CustomArrayList<>();
 
         for (int i = 1; i < 41; i++){
@@ -29,6 +29,39 @@ public class CustomArrayListTest {
             assertEquals(i+1, sut.get(i));
         }
         assertEquals(40, sut.getSize());
+    }
+
+    @Test
+    public void should_add_item_to_index_3(){
+        CustomList<Integer> sut = new CustomArrayList<>();
+
+        for (int i = 1; i < 6; i++){
+            sut.add(i);
+        }
+
+        sut.add(3, 10);
+
+        Integer expectedResult = sut.get(3);
+
+        assertEquals(10, expectedResult);
+    }
+
+    @Test
+    public void should_add_to_full_list (){
+    CustomList<Integer> sut = new CustomArrayList<>();
+
+    for (int i = 1; i < 11; i++){
+        sut.add(i);
+    }
+
+    sut.add(3, 10);
+
+    Integer expectedResult = sut.get(3);
+    Integer expectedLength = sut.getSize();
+
+    assertEquals(10, expectedResult);
+    assertEquals(11, expectedLength);
+        
     }
     
 }
