@@ -63,5 +63,21 @@ public class CustomArrayListTest {
     assertEquals(11, expectedLength);
         
     }
+
+    @Test
+    public void should_remove_item(){
+        CustomList<Integer> sut = new CustomArrayList<>();
+
+        for (int i = 1; i < 11; i++){
+            sut.add(i);
+        }
+
+        Integer expectedResult = sut.remove(3);
+
+        Integer expectedLength = sut.getSize();
+
+        assertEquals(4, expectedResult);
+        assertEquals(9, expectedLength);
+    }
     
 }

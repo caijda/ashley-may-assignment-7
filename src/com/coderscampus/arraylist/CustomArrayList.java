@@ -35,7 +35,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public T get(int index) throws IndexOutOfBoundsException{
 		return (T)items[index];
 	}
-	/////////////////////////////////////////////////////////////
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
@@ -49,9 +48,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 			}
 		}
 		for (i = index; i < items.length; i++){
-			// if (i == items.length && items[i] != null){
-			// 	temp = Arrays.copyOf(temp, i*2);
-			// }
+			if ((i == items.length-1) && (items[i] != null)){
+				temp = Arrays.copyOf(temp, temp.length*2);
+			}
 			if (items[i] != null){
 				temp[i+1] = items[i];
 			}
@@ -61,10 +60,22 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'remove'");
+		Object removedItem = get(index);
+		Object[] temp = new Object[items.length];
+		int i;
+
+		for (i = 0; i < index; i++){
+			temp[i] = items[i];
+		}
+		for (i = index; i < items.length-1; i++){
+			temp[i] = items[i+1];
+		}
+		items = temp;
+
+		return (T)removedItem;
 	}
 
 }
